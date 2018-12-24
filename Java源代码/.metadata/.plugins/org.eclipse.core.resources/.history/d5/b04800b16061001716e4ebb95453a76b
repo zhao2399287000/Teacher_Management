@@ -1,0 +1,68 @@
+package main;
+
+public class Management {
+	private int id;
+	private String name;
+	private String college;
+	private String profession;
+	private String grade;
+	private String work_time;
+	private String tel;
+	
+	public int getId() {
+		return id;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public String getCollege() {
+		return college;
+	}
+	
+	public void setCollege(String college) {
+		this.college = college;
+	}
+	
+	public String getProfession() {
+		return profession;
+	}
+	
+	public void setProfession(String profession) {
+		this.profession = profession;
+	}
+	
+	public String getGrade() {
+		return grade;
+	}
+	
+	public void setGrade(String grade) {
+		this.grade = grade;
+	}
+	
+	public String getWork_time() {
+		return work_time;
+	}
+	
+	public void setWork_time(String work_time) {
+		this.work_time = work_time;
+	}
+	
+	public String getTel() {
+		return tel;
+	}
+	
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
+
+}

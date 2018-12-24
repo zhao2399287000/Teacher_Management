@@ -1,0 +1,188 @@
+package management_ui;
+
+import java.awt.Color;
+import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.SystemColor;
+import java.awt.Toolkit;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+public class Management_insert {
+	
+	//得到当前电脑显示屏的宽和高
+	public int width = Toolkit.getDefaultToolkit().getScreenSize().width;
+	public int height = Toolkit.getDefaultToolkit().getScreenSize().height;
+
+	private JFrame frame;
+	private JTextField textField;
+	private JTextField textField_1;
+	private JTextField textField_2;
+	private JTextField textField_3;
+	private JTextField textField_4;
+	private JTextField textField_5;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Management_insert window = new Management_insert();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public Management_insert() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.getContentPane().setBackground(SystemColor.control);
+		frame.setTitle("教师管理系统");
+		frame.setBounds(0, 0, width, height);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setBounds(63, 13, 1779, 110);
+		lblNewLabel.setIcon(new ImageIcon("E:\\Java\u5B9E\u8BAD\\Teacher Management\\image\\image3.png"));
+		frame.getContentPane().add(lblNewLabel);
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(0, 153, 204));
+		panel.setBounds(63, 136, 1779, 39);
+		frame.getContentPane().add(panel);
+		
+		JButton btnNewButton = new JButton("首    页");
+		btnNewButton.setForeground(Color.BLUE);
+		btnNewButton.setBackground(Color.WHITE);
+		btnNewButton.setFont(new Font("楷体", Font.BOLD, 30));
+		btnNewButton.setBounds(63, 210, 180, 79);
+		frame.getContentPane().add(btnNewButton);
+		
+		JButton button = new JButton("信息显示");
+		button.setForeground(Color.BLUE);
+		button.setFont(new Font("楷体", Font.BOLD, 30));
+		button.setBackground(Color.WHITE);
+		button.setBounds(63, 336, 180, 79);
+		frame.getContentPane().add(button);
+		
+		JButton button_1 = new JButton("信息添加");
+		button_1.setForeground(Color.BLUE);
+		button_1.setFont(new Font("楷体", Font.BOLD, 30));
+		button_1.setBackground(Color.WHITE);
+		button_1.setBounds(63, 462, 180, 79);
+		frame.getContentPane().add(button_1);
+		
+		JButton button_2 = new JButton("信息查询");
+		button_2.setForeground(Color.BLUE);
+		button_2.setFont(new Font("楷体", Font.BOLD, 30));
+		button_2.setBackground(Color.WHITE);
+		button_2.setBounds(63, 588, 180, 79);
+		frame.getContentPane().add(button_2);
+		
+		JButton button_3 = new JButton("信息维护");
+		button_3.setForeground(Color.BLUE);
+		button_3.setFont(new Font("楷体", Font.BOLD, 30));
+		button_3.setBackground(Color.WHITE);
+		button_3.setBounds(63, 714, 180, 79);
+		frame.getContentPane().add(button_3);
+		
+		JButton button_4 = new JButton("信息删除");
+		button_4.setForeground(Color.BLUE);
+		button_4.setFont(new Font("楷体", Font.BOLD, 30));
+		button_4.setBackground(Color.WHITE);
+		button_4.setBounds(63, 840, 180, 79);
+		frame.getContentPane().add(button_4);
+		
+		JLabel lblNewLabel_1 = new JLabel("姓名：");
+		lblNewLabel_1.setFont(new Font("楷体", Font.BOLD, 40));
+		lblNewLabel_1.setBounds(450, 244, 146, 72);
+		frame.getContentPane().add(lblNewLabel_1);
+		
+		JLabel label = new JLabel("学院：");
+		label.setFont(new Font("楷体", Font.BOLD, 40));
+		label.setBounds(450, 413, 146, 72);
+		frame.getContentPane().add(label);
+		
+		JLabel label_1 = new JLabel("专业：");
+		label_1.setFont(new Font("楷体", Font.BOLD, 40));
+		label_1.setBounds(450, 582, 146, 72);
+		frame.getContentPane().add(label_1);
+		
+		JLabel label_2 = new JLabel("班级：");
+		label_2.setFont(new Font("楷体", Font.BOLD, 40));
+		label_2.setBounds(450, 751, 146, 72);
+		frame.getContentPane().add(label_2);
+		
+		JLabel label_3 = new JLabel("工作时间：");
+		label_3.setFont(new Font("楷体", Font.BOLD, 40));
+		label_3.setBounds(1000, 244, 210, 72);
+		frame.getContentPane().add(label_3);
+		
+		JLabel label_4 = new JLabel("联系方式：");
+		label_4.setFont(new Font("楷体", Font.BOLD, 40));
+		label_4.setBounds(1000, 413, 210, 72);
+		frame.getContentPane().add(label_4);
+		
+		textField = new JTextField();
+		textField.setBounds(613, 244, 321, 65);
+		frame.getContentPane().add(textField);
+		textField.setColumns(10);
+		
+		textField_1 = new JTextField();
+		textField_1.setColumns(10);
+		textField_1.setBounds(613, 420, 321, 65);
+		frame.getContentPane().add(textField_1);
+		
+		textField_2 = new JTextField();
+		textField_2.setColumns(10);
+		textField_2.setBounds(613, 588, 321, 65);
+		frame.getContentPane().add(textField_2);
+		
+		textField_3 = new JTextField();
+		textField_3.setColumns(10);
+		textField_3.setBounds(613, 747, 321, 65);
+		frame.getContentPane().add(textField_3);
+		
+		textField_4 = new JTextField();
+		textField_4.setColumns(10);
+		textField_4.setBounds(1260, 244, 321, 65);
+		frame.getContentPane().add(textField_4);
+		
+		textField_5 = new JTextField();
+		textField_5.setColumns(10);
+		textField_5.setBounds(1260, 413, 321, 65);
+		frame.getContentPane().add(textField_5);
+		
+		JButton btnNewButton_2 = new JButton("确定");
+		btnNewButton_2.setForeground(Color.BLUE);
+		btnNewButton_2.setFont(new Font("楷体", Font.BOLD, 30));
+		btnNewButton_2.setBounds(1114, 643, 140, 72);
+		frame.getContentPane().add(btnNewButton_2);
+		
+		JButton button_5 = new JButton("返回");
+		button_5.setForeground(Color.BLUE);
+		button_5.setFont(new Font("楷体", Font.BOLD, 30));
+		button_5.setBounds(1397, 643, 140, 72);
+		frame.getContentPane().add(button_5);
+	}
+}

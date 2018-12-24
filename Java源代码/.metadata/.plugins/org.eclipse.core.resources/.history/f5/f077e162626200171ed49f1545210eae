@@ -1,0 +1,295 @@
+package management_ui;
+
+import java.awt.EventQueue;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.SQLException;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
+import java.awt.Font;
+import java.awt.Color;
+import java.awt.Dimension;
+
+import javax.swing.JMenuBar;
+import javax.swing.JTree;
+import javax.swing.table.DefaultTableCellRenderer;
+
+import management_db.TeacherTable;
+
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.JButton;
+import java.awt.SystemColor;
+import javax.swing.SwingConstants;
+
+public class Management_interface {
+	
+	//得到当前电脑显示屏的宽和高
+	public int width = Toolkit.getDefaultToolkit().getScreenSize().width;
+	public int height = Toolkit.getDefaultToolkit().getScreenSize().height;
+	
+
+	JFrame frame_fa;
+
+//	/**
+//	 * Launch the application.
+//	 */
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					Management_interface window = new Management_interface();
+//					window.frame_fa.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
+
+	/**
+	 * Create the application.
+	 * @throws SQLException 
+	 */
+	public Management_interface() throws SQLException {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 * @throws SQLException 
+	 */
+	private void initialize() throws SQLException{
+		
+		frame_fa = new JFrame();
+		frame_fa.getContentPane().setBackground(SystemColor.control);
+		frame_fa.setTitle("教师管理系统-信息展示");
+		frame_fa.setBounds(0, 0, width, height);
+		frame_fa.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame_fa.getContentPane().setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setBounds(63, 13, 1779, 110);
+		lblNewLabel.setIcon(new ImageIcon("E:\\Java\u5B9E\u8BAD\\Teacher Management\\image\\image3.png"));
+		frame_fa.getContentPane().add(lblNewLabel);
+		
+		//设置一个面板，填充颜色并设置大小
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(0, 153, 204));
+		panel.setBounds(63, 136, 1779, 39);
+		frame_fa.getContentPane().add(panel);
+		
+		//下面为左侧的Button的菜单的界面，分别为信息显示， 信息添加， 信息查询， 信息维护， 信息删除， 注销登陆
+		
+		//每一个button都是设置了显示的文字，颜色，大小，并且添加了鼠标点击事件，除了当前界面自己不跳转之外，都是关闭当前的界面，然后创建一个新的界面
+		//并且设置为可见
+		JButton btnNewButton = new JButton("信息显示");
+		btnNewButton.setForeground(Color.BLUE);
+		btnNewButton.setBackground(Color.WHITE);
+		btnNewButton.setFont(new Font("楷体", Font.BOLD, 30));
+		btnNewButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO 自动生成的方法存根
+		        if(e.getSource()==btnNewButton)
+		        {
+		        }
+				
+			}
+		});
+		btnNewButton.setBounds(63, 210, 180, 79);
+		frame_fa.getContentPane().add(btnNewButton);
+		
+		JButton button = new JButton("信息添加");
+		button.setForeground(Color.BLUE);
+		button.setFont(new Font("楷体", Font.BOLD, 30));
+		button.setBackground(Color.WHITE);
+		//鼠标点击事件，关闭当前的界面，创建新的界面
+		button.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO 自动生成的方法存根
+		        if(e.getSource()==button)
+		        {
+		        	frame_fa.dispose();
+		        	Management_insert management_insert = new Management_insert();
+		        	management_insert.frame_in.setVisible(true);
+		        }
+				
+			}
+		});
+		button.setBounds(63, 336, 180, 79);
+		frame_fa.getContentPane().add(button);
+		
+		JButton button_1 = new JButton("信息查询");
+		button_1.setForeground(Color.BLUE);
+		button_1.setFont(new Font("楷体", Font.BOLD, 30));
+		button_1.setBackground(Color.WHITE);
+		//鼠标点击事件，关闭当前的界面，创建新的界面
+		button_1.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO 自动生成的方法存根
+		        if(e.getSource()==button_1)
+		        {
+		        	frame_fa.dispose();
+		        	Management_inquiry management_inquiry = null;
+					try {
+						management_inquiry = new Management_inquiry();
+					} catch (SQLException | ClassNotFoundException e1) {
+						// TODO 自动生成的 catch 块
+						e1.printStackTrace();
+					}
+		        	management_inquiry.frame_qu.setVisible(true);
+
+		        }
+				
+			}
+		});
+		button_1.setBounds(63, 462, 180, 79);
+		frame_fa.getContentPane().add(button_1);
+		
+		JButton button_2 = new JButton("信息维护");
+		button_2.setForeground(Color.BLUE);
+		button_2.setFont(new Font("楷体", Font.BOLD, 30));
+		button_2.setBackground(Color.WHITE);
+		//鼠标点击事件，关闭当前的界面，创建新的界面
+		button_2.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO 自动生成的方法存根
+		        if(e.getSource()==button_2)
+		        {
+		        	frame_fa.dispose();
+		        	Management_maintenance management_maintenance = null;
+					try {
+						management_maintenance = new Management_maintenance();
+					} catch (ClassNotFoundException | SQLException e1) {
+						// TODO 自动生成的 catch 块
+						e1.printStackTrace();
+					}
+		        	management_maintenance.frame_ma.setVisible(true);
+
+		        }
+				
+			}
+		});
+		button_2.setBounds(63, 588, 180, 79);
+		frame_fa.getContentPane().add(button_2);
+		
+		JButton button_3 = new JButton("信息删除");
+		button_3.setForeground(Color.BLUE);
+		button_3.setFont(new Font("楷体", Font.BOLD, 30));
+		button_3.setBackground(Color.WHITE);
+		//鼠标点击事件，关闭当前的界面，创建新的界面
+		button_3.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO 自动生成的方法存根
+		        if(e.getSource()==button_3)
+		        {
+		        	frame_fa.dispose();
+		        	Management_delete management_delete = new Management_delete();
+		        	management_delete.frame_de.setVisible(true);
+		        }
+				
+			}
+		});
+		button_3.setBounds(63, 714, 180, 79);
+		frame_fa.getContentPane().add(button_3);
+		
+		JButton button_4 = new JButton("注销登陆");
+		button_4.setForeground(Color.BLUE);
+		button_4.setFont(new Font("楷体", Font.BOLD, 30));
+		button_4.setBackground(Color.WHITE);
+		//鼠标点击事件，关闭当前的界面，创建新的登陆界面
+		button_4.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO 自动生成的方法存根
+		        if(e.getSource()==button_4)
+		        {
+		        	frame_fa.dispose();
+		        	Management_start management_start = new Management_start();
+		        	management_start.frame.setVisible(true);
+		        }
+				
+			}
+		});
+		button_4.setBounds(63, 840, 180, 79);
+		frame_fa.getContentPane().add(button_4);
+		
+		//显示表格的表头信息，通过7个JLabel显示，对应的编号，姓名，学院，专业，班级，工作时间，以及联系方式
+		JLabel lblNewLabel_1 = new JLabel("编号");
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_1.setFont(new Font("楷体", Font.BOLD, 40));
+		lblNewLabel_1.setBounds(390, 188, 180, 67);
+		frame_fa.getContentPane().add(lblNewLabel_1);
+		
+		JLabel label_1 = new JLabel("姓名");
+		label_1.setHorizontalAlignment(SwingConstants.CENTER);
+		label_1.setFont(new Font("楷体", Font.BOLD, 40));
+		label_1.setBounds(580, 188, 180, 67);
+		frame_fa.getContentPane().add(label_1);
+		
+		JLabel label_2 = new JLabel("学院");
+		label_2.setHorizontalAlignment(SwingConstants.CENTER);
+		label_2.setFont(new Font("楷体", Font.BOLD, 40));
+		label_2.setBounds(764, 188, 180, 67);
+		frame_fa.getContentPane().add(label_2);
+		
+		JLabel label_3 = new JLabel("专业");
+		label_3.setHorizontalAlignment(SwingConstants.CENTER);
+		label_3.setFont(new Font("楷体", Font.BOLD, 40));
+		label_3.setBounds(945, 188, 180, 67);
+		frame_fa.getContentPane().add(label_3);
+		
+		JLabel label_4 = new JLabel("班级");
+		label_4.setHorizontalAlignment(SwingConstants.CENTER);
+		label_4.setFont(new Font("楷体", Font.BOLD, 40));
+		label_4.setBounds(1130, 188, 180, 67);
+		frame_fa.getContentPane().add(label_4);
+		
+		JLabel label_5 = new JLabel("工作时间");
+		label_5.setHorizontalAlignment(SwingConstants.CENTER);
+		label_5.setFont(new Font("楷体", Font.BOLD, 40));
+		label_5.setBounds(1315, 188, 180, 67);
+		frame_fa.getContentPane().add(label_5);
+		
+		JLabel label_6 = new JLabel("联系方式");
+		label_6.setHorizontalAlignment(SwingConstants.CENTER);
+		label_6.setFont(new Font("楷体", Font.BOLD, 40));
+		label_6.setBounds(1509, 190, 180, 67);
+		frame_fa.getContentPane().add(label_6);
+		
+		
+		//创建一个Table表格，然后设置表格的大小和框体的分割，通过调用方法，将数据库中的所有数据显示出来
+		JTable table = new JTable(new TeacherTable());
+		table.setSize(1300, 640);
+		table.setLocation(390, 270);
+		table.setPreferredScrollableViewportSize(new Dimension(650, 250));
+		table.setRowHeight(80);
+		table.setFont(new Font("楷体", Font.PLAIN, 30));
+		frame_fa.getContentPane().add(table);
+		//设置表格中数据居中
+		DefaultTableCellRenderer renderer=new DefaultTableCellRenderer();
+		renderer.setHorizontalAlignment(DefaultTableCellRenderer.CENTER);
+		table.setDefaultRenderer(Object.class, renderer);
+		
+		
+		
+
+		
+	}
+}

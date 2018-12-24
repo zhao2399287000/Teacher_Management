@@ -1,0 +1,156 @@
+package management_ui;
+
+import java.awt.EventQueue;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.SQLException;
+
+import javax.swing.JFrame;
+import java.awt.Font;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.ImageIcon;
+import javax.swing.JTextField;
+
+import management_db.Demo;
+
+import java.awt.Color;
+import javax.swing.JButton;
+import javax.swing.JPasswordField;
+
+public class Management_start {
+	
+	//得到当前电脑显示屏的宽和高
+	public int width = Toolkit.getDefaultToolkit().getScreenSize().width;
+	public int height = Toolkit.getDefaultToolkit().getScreenSize().height;
+	
+	//设置窗体的大小
+	public int windowsWidth = 800;
+	public int windowsHeight = 500;
+
+	//创建界面
+	public JFrame frame;
+	private JTextField textField;
+	private JPasswordField passwordField;
+
+
+	/**
+	 * Create the application.
+	 */
+	public Management_start() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		//创建一个窗口，并设置标题和大小，并且可以关闭
+		frame = new JFrame();
+		frame.setTitle("教师管理系统-登陆界面");
+		frame.setBounds((width - windowsWidth) / 2,
+				(height - windowsHeight) / 2, windowsWidth, windowsHeight);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		
+		//设置一个标签，插入自己准备好的图片，也就是山东理工大学——教室管理的图片
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon("E:\\Java\u5B9E\u8BAD\\Teacher Management\\image\\image1.png"));
+		lblNewLabel.setBounds(45, 79, 250, 261);
+		frame.getContentPane().add(lblNewLabel);
+		
+		//设置一个标签，用来显示用户名，并且设置显示的字体的大小和标签的边框
+		JLabel lblNewLabel_1 = new JLabel("用户名：");
+		lblNewLabel_1.setForeground(Color.BLUE);
+		lblNewLabel_1.setFont(new Font("宋体", Font.BOLD, 30));
+		lblNewLabel_1.setBounds(352, 79, 133, 75);
+		frame.getContentPane().add(lblNewLabel_1);
+		
+		//设置一个标签，用来显示密码，并且设置显示的字体的大小和标签的边框
+		JLabel label = new JLabel("密  码：");
+		label.setForeground(Color.BLUE);
+		label.setFont(new Font("宋体", Font.BOLD, 30));
+		label.setBounds(352, 200, 133, 75);
+		frame.getContentPane().add(label);
+		
+		//设置一个文本收集框，用来收集输入的数据，并且设置文本框的大小
+		textField = new JTextField();
+		textField.setBounds(492, 90, 244, 52);
+		frame.getContentPane().add(textField);
+		textField.setColumns(10);
+		
+		//设置一个注册按钮，这个按钮中添加了点击响应事件，可以响应鼠标点击，并进行页面的跳转，同样设置按钮大小以及里面字体的大小
+		JButton btnNewButton = new JButton("注册");
+		btnNewButton.setForeground(Color.WHITE);
+		btnNewButton.setFont(new Font("楷体", Font.BOLD, 30));
+		btnNewButton.setBackground(new Color(30, 144, 255));
+		//添加鼠标点击事件
+		btnNewButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO 自动生成的方法存根
+		        if(e.getSource()==btnNewButton)
+		        {
+		        	//关闭当前界面
+		        	frame.dispose();
+		        	//创建一个新的注册界面，这个注册设置为可见
+		        	Management_register management_register = new Management_register();
+		        	management_register.frame_re.setVisible(true);
+		        }
+				
+			}
+		});
+		btnNewButton.setBounds(379, 316, 133, 52);
+		frame.getContentPane().add(btnNewButton);
+		
+		//设置一个登陆按钮，这个按钮中添加了点击响应事件，可以响应鼠标点击，并进行页面的跳转，同样设置按钮大小以及里面字体的大小
+		JButton button = new JButton("登录");
+		button.setForeground(Color.WHITE);
+		button.setFont(new Font("楷体", Font.BOLD, 30));
+		button.setBackground(new Color(30, 144, 255));
+		//添加鼠标点击事件
+		button.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO 自动生成的方法存根
+		        if(e.getSource()==button)
+		        {
+		        	
+		        	String user_name = textField.getText();
+		        	
+		        	char[] pass1 = passwordField.getPassword();
+		        	String user_password1 = new String(pass1);
+		        	
+		        	Demo demo = new Demo();
+		            try {
+		                String pw = demo.selectPassWord(user_name);
+		                if (pw.equals(user_password1)){
+		                	JOptionPane.showMessageDialog(frame, "登陆成功！\r\n" , "确定", JOptionPane.CANCEL_OPTION);
+				        	frame.dispose();
+				        	Management_interface management_interface = new Management_interface();
+				        	management_interface.frame_fa.setVisible(true);
+		                }
+		                else {
+		                	JOptionPane.showMessageDialog(frame, "密码错误，登陆失败！\r\n" , "确定", JOptionPane.CANCEL_OPTION);
+						}
+		            } catch (SQLException e1) {
+		                e1.printStackTrace();
+		            } catch (ClassNotFoundException e1) {
+		                e1.printStackTrace();
+		            }
+		        }
+				
+			}
+		});
+		button.setBounds(578, 316, 133, 52);
+		frame.getContentPane().add(button);
+		
+		passwordField = new JPasswordField();
+		passwordField.setBounds(492, 209, 244, 52);
+		frame.getContentPane().add(passwordField);
+		
+	}
+}

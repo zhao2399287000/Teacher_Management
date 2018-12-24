@@ -1,0 +1,5 @@
+package management_db;
+
+public class DBUtil {
+
+}
